@@ -1,27 +1,16 @@
 const toDoItem = (title, description, dueDate, priority) => {
-    const setTitle = (value) => title = value;
-    const getTitle = () => title;
-    
-    const setDescription = (value) => description = value;
-    const getDescription = () => description;
-
-    const setDueDate = (value) => dueDate = value;
-    const getDueDate = () => dueDate;
-
-    const setPriority = (value) => priority = value;
-    const getPriority = () => priority;
 
     return {
-        setTitle,
-        getTitle,
+        set title(value) {title = value},
+        get title() {return title},
 
-        setDescription,
-        getDescription,
+        set description(value) {description = value},
+        get description() {return description},
 
-        setDueDate,
-        getDueDate,
+        set dueDate(value) {dueDate = value},
+        get dueDate() {return dueDate},
 
-        setPriority,
-        getPriority,
+        set priority(value) {priority = value},
+        get priority() {return priority},
     };
 };
