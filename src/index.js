@@ -1,4 +1,4 @@
-const toDoItem = (title, description, dueDate, priority) => {
+export const task = (title, description, dueDate, priority) => {
 
     return {
         set title(value) {title = value},
@@ -15,7 +15,7 @@ const toDoItem = (title, description, dueDate, priority) => {
     };
 };
 
-const project = (title) => {
+export const project = (title) => {
     const tasks = [];
 
     const addTask = (task) => {tasks.push(task)};
