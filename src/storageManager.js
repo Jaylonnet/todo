@@ -8,8 +8,9 @@ export const storageManager = () => {
         };
     };
 
-    const writeProjects = () => {
-        
+    const writeProjects = (projects) => {
+        localStorage.setItem('projects', JSON.stringify(projects))
     };
-    return {getProjects}
+
+    return {getProjects, writeProjects}
 };
