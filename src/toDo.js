@@ -34,5 +34,6 @@ export const project = (title) => {
 export const projectManager = () => {
     const projects = [];
 
-    
+    return {get projects() {return projects},
+}
 };
