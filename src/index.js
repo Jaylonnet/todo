@@ -19,4 +19,15 @@ const initProjects = function (){
         storage.writeProjects(projectMgr.projects);
     };
 
+    const recreatedProjects = [];
+    const recreateBehaviour = function() {
+        for (let proj of items) {
+            const newProject = Object.assign(proj, project);
+            recreatedProjects.push(newProject);
+        };
+    }();
+
+
+    console.log(recreatedProjects)
+
 }();
