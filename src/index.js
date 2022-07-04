@@ -1,11 +1,12 @@
 import { task, project, projectManager } from "./toDo.js";
 import { storageManager } from "./storageManager.js";
+import { DOMCreateProject } from "./dom.js";
 
-const storage = storageManager();
+const storageMgr = storageManager();
 const projectMgr = projectManager();
 
 const initProjects = function (){
-    const items = storage.getProjects();
+    const items = storageMgr.getProjects();
 
     const createDefaultProject = () => {
         const defaultTask = task('Task 1', 'Description', 'Priority', 'Due Date');
@@ -16,7 +17,7 @@ const initProjects = function (){
 
     if (items === null) {
         projectMgr.projects.push(createDefaultProject());
-        storage.writeProjects(projectMgr.projects);
+        storageMgr.writeProjects(projectMgr.projects);
     };
 
     const recreateBehaviour = function() {
@@ -27,6 +28,9 @@ const initProjects = function (){
                 newProject.addTask(newTask);
             };
             projectMgr.projects.push(newProject);
+            DOMCreateProject(newProject,
+                projectMgr.projects.indexOf(newProject),
+                document.querySelector('#project-container'));
         };
     }();
 }();
