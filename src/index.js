@@ -1,6 +1,6 @@
 import { task, project, projectManager } from "./toDo.js";
 import { storageManager } from "./storage.js";
-import { displayProjectOnPage } from "./dom.js";
+import { displayProjectOnPage, displayTaskOnPage } from "./dom.js";
 
 
 let selectedProject = 0;
@@ -33,6 +33,8 @@ createTaskBtn.addEventListener('click', () => {
 });
 
 function createNewTask(form, project) {
-    const formData = [form.taskTitle.value, form.taskDesc.value, form.taskDueDate.value, form.taskPriority]
+    const formData = [form.taskTitle.value, form.taskDesc.value, form.taskDueDate.value, form.taskPriority];
     const newTask = task(...formData, project.generateTaskId);
+    project.addTask(newTask);
+    displayTaskOnPage(newTask, project.getProjectId);
 }
