@@ -34,20 +34,22 @@ export const project = (title, uniqueProjectIdentifier) => {
     };
 };
 
-const projectManager = function () {
+export const projectManager = function () {
     let uniqueProjectIdentifier = 0;
     const projectList = [];
 
+    const addProject = (project) => {
+        projectList.push(project);
+    }
+
     return {
-        get getUniqueProjectIdentifier() {
+        get generateProjectIdentifier() {
             uniqueProjectIdentifier++;
             return uniqueProjectIdentifier;
         },
         get getProjectList() {
             return projectList;
         },
-        set addProject(project) {
-            projectList.push(project)
-        }
+        addProject
     };
 }();
