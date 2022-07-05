@@ -1,16 +1,19 @@
 export const storageManager = () => {
-    const getProjects = () => {
-        const projects = localStorage.getItem("projects");
+    const getData = (key) => {
+        const data = localStorage.getItem(key);
         if (projects === null) {
             return null;
         } else {
-            return JSON.parse(projects);
+            return JSON.parse(data);
         };
     };
 
-    const writeProjects = (projects) => {
-        localStorage.setItem('projects', JSON.stringify(projects))
+    const saveData = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data))
     };
 
-    return {getProjects, writeProjects}
+    return {
+        getData,
+        saveData,
+    };
 };
