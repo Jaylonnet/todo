@@ -19,8 +19,20 @@ function createNewProject(title) {
 };
 
 function addListenerToProjectHeading(datasetId) {
-    const projectHeading = document.querySelector(`h3[data-project-Id="${datasetId}"]`);
+    const projectHeading = document.querySelector(`h3[data-project-id="${datasetId}"]`);
     projectHeading.addEventListener('click', (e) => {
-        selectedProject = e.target.getAttribute("data-project-Id");
+        selectedProject = e.target.getAttribute("data-project-id");
     });
+}
+
+const createTaskBtn = document.querySelector('#createTaskBtn');
+createTaskBtn.addEventListener('click', () => {
+    const form = document.forms.createTaskForm;
+    const project = projectManager.getProjectList.find(proj => proj.getProjectId === parseInt(selectedProject))
+    createNewTask(form, project);
+});
+
+function createNewTask(form, project) {
+    const formData = [form.taskTitle.value, form.taskDesc.value, form.taskDueDate.value, form.taskPriority]
+    const newTask = task(...formData, project.generateTaskId);
 }
