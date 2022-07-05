@@ -21,6 +21,6 @@ function createNewProject(title) {
 function addListenerToProjectHeading(datasetId) {
     const projectHeading = document.querySelector(`h3[data-project-identifier="${datasetId}"]`);
     projectHeading.addEventListener('click', (e) => {
-
+        selectedProject = e.target.getAttribute("data-project-identifier");
     });
 }

@@ -4,3 +4,7 @@ export function displayProjectOnPage(project, projectIdentifier) {
     heading.dataset.projectIdentifier = projectIdentifier;
     document.querySelector('#project-container').append(heading);
 };
+
+export function displayTaskOnPage(task, taskIdentifier, projectIdentifier) {
+
+};
