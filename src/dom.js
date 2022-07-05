@@ -4,6 +4,11 @@ export function displayProjectOnPage(project, projectId) {
     heading.dataset.projectId = projectId;
     heading.id = "projectHeading";
     document.querySelector('#project-container').append(heading);
+    
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+    taskContainer.dataset.projectId = projectId;
+    document.querySelector('#tasksContainer').append(taskContainer)
 };
 
 export function displayTaskOnPage(task, taskId, projectId) {
