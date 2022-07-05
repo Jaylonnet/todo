@@ -1,4 +1,4 @@
-export const task = (title, description, dueDate, priority) => {
+export const task = (title, description, dueDate, priority, taskId) => {
 
     return {
         set title(value) {title = value},
@@ -12,6 +12,8 @@ export const task = (title, description, dueDate, priority) => {
 
         set priority(value) {priority = value},
         get priority() {return priority},
+
+        get taskId() {return taskId}
     };
 };
 
