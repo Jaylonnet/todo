@@ -2,6 +2,7 @@ export function displayProjectOnPage(project, projectIdentifier) {
     const heading = document.createElement('h3');
     heading.textContent = project.title;
     heading.dataset.projectIdentifier = projectIdentifier;
+    heading.id = "projectHeading";
     document.querySelector('#project-container').append(heading);
 };
 
