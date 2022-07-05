@@ -13,7 +13,7 @@ export const task = (title, description, dueDate, priority, taskId) => {
         set priority(value) {priority = value},
         get priority() {return priority},
 
-        get taskId() {return taskId}
+        get getTaskId() {return taskId}
     };
 };
 
