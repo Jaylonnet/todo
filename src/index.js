@@ -12,5 +12,5 @@ createProjectBtn.addEventListener('click', () => {
 function createNewProject(title) {
     const newProject = project(title, projectManager.generateProjectIdentifier);
     projectManager.addProject(newProject);
-    console.log(newProject.getProjectIdentifier)
+    displayProjectOnPage(newProject, newProject.getProjectIdentifier);
 };
