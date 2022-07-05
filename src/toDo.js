@@ -15,18 +15,39 @@ export const task = (title, description, dueDate, priority) => {
     };
 };
 
-export const project = (title) => {
+export const project = (title, uniqueProjectIdentifier) => {
     const tasks = [];
+    let uniqueTaskIdentifier = 0;
 
     const addTask = (task) => {tasks.push(task)};
-
-    const removeTask = (index) => {tasks.splice(index, 1)};
     
     return {
         set title(value) {title = value},
         get title() {return title},
         get tasks() {return tasks},
+        get getProjectIdentifier() {return uniqueProjectIdentifier},
+        get generateTaskIdentifier() {
+            uniqueTaskIdentifier++;
+            return uniqueTaskIdentifier;
+        },
         addTask,
-        removeTask,
     };
 };
+
+const projectManager = function () {
+    let uniqueProjectIdentifier = 0;
+    const projectList = [];
+
+    return {
+        get getUniqueProjectIdentifier() {
+            uniqueProjectIdentifier++;
+            return uniqueProjectIdentifier;
+        },
+        get getProjectList() {
+            return projectList;
+        },
+        set addProject(project) {
+            projectList.push(project)
+        }
+    };
+}();
