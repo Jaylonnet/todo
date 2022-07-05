@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         index: './src/index.js',
         dom: './src/dom.js',
-        storageManager: './src/storageManager.js',
+        storageManager: './src/storage.js',
         toDo: './src/toDo.js',
     },
     devtool: 'inline-source-map',
