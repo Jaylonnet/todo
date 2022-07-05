@@ -12,15 +12,15 @@ createProjectBtn.addEventListener('click', () => {
 });
 
 function createNewProject(title) {
-    const newProject = project(title, projectManager.generateProjectIdentifier);
+    const newProject = project(title, projectManager.generateProjectId);
     projectManager.addProject(newProject);
-    displayProjectOnPage(newProject, newProject.getProjectIdentifier);
-    addListenerToProjectHeading(newProject.getProjectIdentifier);
+    displayProjectOnPage(newProject, newProject.getProjectId);
+    addListenerToProjectHeading(newProject.getProjectId);
 };
 
 function addListenerToProjectHeading(datasetId) {
-    const projectHeading = document.querySelector(`h3[data-project-identifier="${datasetId}"]`);
+    const projectHeading = document.querySelector(`h3[data-project-Id="${datasetId}"]`);
     projectHeading.addEventListener('click', (e) => {
-        selectedProject = e.target.getAttribute("data-project-identifier");
+        selectedProject = e.target.getAttribute("data-project-Id");
     });
 }

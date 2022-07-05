@@ -15,9 +15,9 @@ export const task = (title, description, dueDate, priority) => {
     };
 };
 
-export const project = (title, uniqueProjectIdentifier) => {
+export const project = (title, uniqueProjectId) => {
     const tasks = [];
-    let uniqueTaskIdentifier = 0;
+    let uniqueTaskId = 0;
 
     const addTask = (task) => {tasks.push(task)};
     
@@ -25,17 +25,17 @@ export const project = (title, uniqueProjectIdentifier) => {
         set title(value) {title = value},
         get title() {return title},
         get tasks() {return tasks},
-        get getProjectIdentifier() {return uniqueProjectIdentifier},
-        get generateTaskIdentifier() {
-            uniqueTaskIdentifier++;
-            return uniqueTaskIdentifier;
+        get getProjectId() {return uniqueProjectId},
+        get generateTaskId() {
+            uniqueTaskId++;
+            return uniqueTaskId;
         },
         addTask,
     };
 };
 
 export const projectManager = function () {
-    let uniqueProjectIdentifier = 0;
+    let uniqueProjectId = 0;
     const projectList = [];
 
     const addProject = (project) => {
@@ -43,9 +43,9 @@ export const projectManager = function () {
     }
 
     return {
-        get generateProjectIdentifier() {
-            uniqueProjectIdentifier++;
-            return uniqueProjectIdentifier;
+        get generateProjectId() {
+            uniqueProjectId++;
+            return uniqueProjectId;
         },
         get getProjectList() {
             return projectList;
