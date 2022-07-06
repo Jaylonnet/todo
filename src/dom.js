@@ -12,5 +12,15 @@ export function displayProjectOnPage(project, projectId) {
 };
 
 export function displayTaskOnPage(task, taskId, projectId) {
-
+    const taskBox = document.createElement('div');
+    taskBox.classList.add('task');
+    taskBox.dataset.taskId = taskId;
+    taskBox.dataset.projectId = projectId;
+    const taskData = [task.title, task.description, task.dueDate, task.priority];
+    for (let data of taskData) {
+        const p = document.createElement('p')
+        p.textContent = data;
+        taskBox.append(p);
+    };
+    document.querySelector(`.task-container[data-project-id="${projectId}"]`).appendChild(taskBox);
 };
