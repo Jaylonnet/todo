@@ -1,6 +1,7 @@
 import { task, project, projectManager } from "./toDo.js";
 import { storageManager } from "./storage.js";
 import { displayProjectOnPage, displayTaskOnPage } from "./dom.js";
+import './style.css';
 
 
 let selectedProject = 0;
