@@ -4,7 +4,7 @@ import { displayProjectOnPage, displayTaskOnPage } from "./dom.js";
 import './style.css';
 
 
-let selectedProject = 0;
+let selectedProject = 1;
 
 const createProjectBtn = document.querySelector('#createProjectBtn');
 createProjectBtn.addEventListener('click', () => {
@@ -34,7 +34,7 @@ createTaskBtn.addEventListener('click', () => {
 });
 
 function createNewTask(form, project) {
-    const formData = [form.taskTitle.value, form.taskDesc.value, form.taskDueDate.value, form.taskPriority.value];
+    const formData = [form.taskTitle.value, form.taskDueDate.value, form.taskPriority.value];
     const newTask = task(...formData, project.generateTaskId);
     project.addTask(newTask);
     displayTaskOnPage(newTask, newTask.getTaskId, project.getProjectId);
