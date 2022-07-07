@@ -8,7 +8,7 @@ export function displayProjectOnPage(project, projectId) {
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
     taskContainer.dataset.projectId = projectId;
-    document.querySelector('#tasksContainer').append(taskContainer)
+    document.querySelector('#tasks').append(taskContainer)
 };
 
 export function displayTaskOnPage(task, taskId, projectId) {
