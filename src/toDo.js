@@ -1,11 +1,8 @@
-export const task = (title, description, dueDate, priority, taskId) => {
+export const task = (title, dueDate, priority, taskId) => {
 
     return {
         set title(value) {title = value},
         get title() {return title},
-
-        set description(value) {description = value},
-        get description() {return description},
 
         set dueDate(value) {dueDate = value},
         get dueDate() {return dueDate},
