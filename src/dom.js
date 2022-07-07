@@ -3,7 +3,7 @@ export function displayProjectOnPage(project, projectId) {
     heading.textContent = project.title;
     heading.dataset.projectId = projectId;
     heading.id = "projectHeading";
-    document.querySelector('#project-container').append(heading);
+    document.querySelector('#projects').append(heading);
     
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
