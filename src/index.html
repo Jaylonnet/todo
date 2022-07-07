@@ -15,52 +15,49 @@
             <h1>TaskTackler</h1>
         </div>
 
-        <form action="#" id="createTaskForm">
-            <h2>Create Task</h2>
-            <div>
-                <label for="taskTitle">Title</label>
-                <input type="text" name="taskTitle" id="taskTitle">
-            </div>
 
-            <div>
-                <label for="taskDesc">Description</label>
-                <input type="text" name="taskDesc" id="taskDesc">
-            </div>
-
-            <div>
-                <label for="taskDueDate">Due date</label>
-                <input type="date" name="taskDueDate" id="taskDueDate">
-            </div>
-
-            <div>
-                <label for="taskPriority">Description</label>
-                <input type="text" name="taskPriority" id="taskPriority">
-            </div>
-
-            <div>
-                <button type="button" id="createTaskBtn">Add Task</button>
-            </div>
-        </form>
-
-        <form action="#" id="createProjectForm">
-            <h2>Create Project</h2>
-            <label for="projectTitle">Title</label>
-            <input type="text" name="projectTitle" id="projectTitle">
-            <button type="button" id="createProjectBtn">Create Project</button>
-        </form>
 
         <div id="projects">
             <h2>Projects</h2>
-            <div id="project-container">
-            </div>
+
+            <form action="#" id="createProjectForm">
+                <h2>Create New Project</h2>
+
+                <div>
+                    <p><label for="projectTitle">Project Title</label></p>
+                    <input type="text" name="projectTitle" id="projectTitle">
+                </div>
+                <div><button type="button" id="createProjectBtn">Create Project</button></div>
+            </form>
+
         </div>
 
 
         <div id="tasks">
+
             <h2>Tasks</h2>
-            <div id="tasksContainer">
-            </div>
+
+            <form action="#" id="createTaskForm">
+                <h2>Create Task</h2>
+                <div>
+                    <input type="text" name="taskTitle" id="taskTitle" placeholder="Title">
+                </div>
+
+                <div>
+                    <input type="date" name="taskDueDate" id="taskDueDate">
+                </div>
+
+                <div>
+                    <input type="text" name="taskPriority" id="taskPriority">
+                </div>
+
+                <div>
+                    <button type="button" id="createTaskBtn">Add Task</button>
+                </div>
+            </form>
+
         </div>
+
     </div>
 
 </body>
