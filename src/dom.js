@@ -24,3 +24,18 @@ export function displayTaskOnPage(task, taskId, projectId) {
     };
     document.querySelector(`.task-container[data-project-id="${projectId}"]`).appendChild(taskBox);
 };
+
+export function hideProjectTasks() {
+    const allTasks = document.querySelectorAll('.task');
+    allTasks.forEach(task => {
+        task.style.display = 'none';
+    })
+};
+
+export function showProjectTasks(projectId, projectTitle) {
+    const projectTasks = document.querySelectorAll(`.task[data-project-id="${projectId}"]`)
+    projectTasks.forEach(task => {
+        task.style.display = 'block';
+    });
+    document.querySelector('#projectName').textContent = projectTitle
+};
