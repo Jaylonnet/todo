@@ -1,6 +1,6 @@
 import { task, project, projectManager } from "./toDo.js";
 import { storageManager } from "./storage.js";
-import { displayProjectOnPage, displayTaskOnPage } from "./dom.js";
+import { displayProjectOnPage, displayTaskOnPage, hideProjectTasks, showProjectTasks } from "./dom.js";
 import './style.css';
 
 
@@ -23,6 +23,9 @@ function addListenerToProjectHeading(datasetId) {
     const projectHeading = document.querySelector(`h3[data-project-id="${datasetId}"]`);
     projectHeading.addEventListener('click', (e) => {
         selectedProject = e.target.getAttribute("data-project-id");
+        hideProjectTasks();
+        const projectTitle = projectManager.getProjectList.find(proj => proj.getProjectId === parseInt(selectedProject)).title
+        showProjectTasks(selectedProject, projectTitle);
     });
 }
 
