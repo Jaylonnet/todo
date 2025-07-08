@@ -1,4 +1,42 @@
+const TASKS = [
+  {
+    id: crypto.randomUUID(),
+    text: "Complete online JavaScript course",
+    completed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    text: "Jog around the park 3x",
+    completed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    text: "10 minutes meditation",
+    completed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    text: "Read for 1 hour",
+    completed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    text: "Pick up groceries",
+    completed: false,
+  },
+  {
+    id: crypto.randomUUID(),
+    text: "Complete Todo App on Frontend Mentor",
+    completed: false,
+  },
+];
+
 function App() {
+  const tasks = TASKS.map((task) => (
+    <li className="task-item" key={task.id}>
+      {task.text}
+    </li>
+  ));
   return (
     <div className="content">
       <header className="header">
@@ -9,16 +47,9 @@ function App() {
           <div className="create-task">
             <button className="create-task__btn">Create a new todo...</button>
           </div>
-          <ul className="task-list">
-            <li className="task-item">Complete online JavaScript course</li>
-            <li className="task-item">Jog around the park 3x</li>
-            <li className="task-item">10 minutes meditation</li>
-            <li className="task-item">Read for 1 hour</li>
-            <li className="task-item">Pick up groceries</li>
-            <li className="task-item">Complete Todo App on Frontend Mentor</li>
-          </ul>
+          <ul className="task-list">{tasks}</ul>
           <div className="task-count">
-            <div className="task-count__text">5 items left</div>
+            <div className="task-count__text">{tasks.length} items left</div>
             <div className="task-count__clear-completed">Clear Completed</div>
           </div>
           <div className="task-filtering">
