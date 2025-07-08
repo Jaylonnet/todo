@@ -16,13 +16,18 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
-  background-color: hsl(235, 21%, 11%);
+  font-size: 1.8rem;
+  background-color: hsl(240, 20%, 12%);
   background-image: url("assets/bg-desktop-dark.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
-  background-size: 100vw 25vh;
-  padding-top: 6rem;
+  background-size: 100vw 20vh;
+  padding: 3rem 1.4rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
@@ -35,8 +40,67 @@ body {
 }
 
 .logo {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5rem;
+}
+
+.create-task {
+  margin-top: 2rem;
+  padding: 1.4rem;
+  font-size: 1.4rem;
+  background: #25273c;
+  border-radius: 0.6rem;
+}
+
+.create-task__btn {
+  background: none;
+  border: none;
+  color: hsl(234, 11%, 52%);
+  font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
+}
+
+.task-list {
+  margin: 1.6rem 0 0;
+}
+
+.task-item {
+  padding: 1.4rem;
+  font-size: 1.4rem;
+  background: #25273c;
+  color: hsl(234, 39%, 85%);
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+}
+
+.task-item:first-child {
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+
+.task-count {
+  padding: 1.4rem;
+  font-size: 1.4rem;
+  background: #25273c;
+  color: hsl(234, 11%, 52%);
+  display: flex;
+  justify-content: space-between;
+
+  border-radius: 0 0 0.6rem 0.6rem;
+}
+
+.task-filtering {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: #25273c;
+  padding: 1.4rem;
+  border-radius: 0.6rem;
+  margin-top: 2rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: hsl(234, 11%, 52%);
+}
+
+.selected-filter {
+  color: hsl(220, 98%, 61%);
 }
