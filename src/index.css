@@ -96,9 +96,16 @@ ul {
   padding: 1.4rem;
   border-radius: 0.6rem;
   margin-top: 2rem;
+}
+
+.filter {
+  color: hsl(234, 11%, 52%);
   font-weight: 500;
   font-size: 1.6rem;
-  color: hsl(234, 11%, 52%);
+  font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .selected-filter {

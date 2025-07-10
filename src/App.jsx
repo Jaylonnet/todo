@@ -1,41 +1,36 @@
-const TASKS = [
-  {
-    id: crypto.randomUUID(),
-    text: "Complete online JavaScript course",
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    text: "Jog around the park 3x",
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    text: "10 minutes meditation",
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    text: "Read for 1 hour",
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    text: "Pick up groceries",
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    text: "Complete Todo App on Frontend Mentor",
-    completed: false,
-  },
-];
+import { useState } from "react";
+import FilterButton from "./components/FilterButton";
 
-function App() {
-  const tasks = TASKS.map((task) => (
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.completed,
+  Completed: (task) => task.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
+function App({ taskData }) {
+  const [filter, setFilter] = useState("All");
+  const [taskList, setTaskList] = useState([...taskData]);
+
+  const clearCompleted = () => {
+    const remainingTasks = taskList.filter((task) => !task.completed);
+    setTaskList(remainingTasks);
+  };
+
+  const tasks = taskList.filter(FILTER_MAP[filter]).map((task) => (
     <li className="task-item" key={task.id}>
       {task.text}
     </li>
+  ));
+
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
+    />
   ));
   return (
     <div className="content">
@@ -50,13 +45,14 @@ function App() {
           <ul className="task-list">{tasks}</ul>
           <div className="task-count">
             <div className="task-count__text">{tasks.length} items left</div>
-            <div className="task-count__clear-completed">Clear Completed</div>
+            <button
+              className="task-count__clear-completed"
+              onClick={() => clearCompleted()}
+            >
+              Clear Completed
+            </button>
           </div>
-          <div className="task-filtering">
-            <span className="all selected-filter">All</span>
-            <span className="active">Active</span>
-            <span className="completed">Completed</span>
-          </div>
+          <div className="task-filtering">{filterList}</div>
         </section>
       </main>
     </div>
