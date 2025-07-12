@@ -4,7 +4,7 @@ const FilterButton = ({ name, isPressed, setFilter }) => {
   return (
     <button
       type="button"
-      className="btn toggle-btn"
+      className="btn toggle-btn filter"
       aria-pressed={isPressed}
       onClick={() => setFilter(name)}
     >

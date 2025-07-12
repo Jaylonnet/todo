@@ -59,6 +59,7 @@ ul {
   border: none;
   color: hsl(234, 11%, 52%);
   font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
+  cursor: text;
 }
 
 .task-list {
@@ -88,6 +89,15 @@ ul {
   border-radius: 0 0 0.6rem 0.6rem;
 }
 
+.task-count__clear-completed {
+  font-size: 1.4rem;
+  background: #25273c;
+  color: hsl(234, 11%, 52%);
+  font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
 .task-filtering {
   display: flex;
   justify-content: center;
@@ -108,6 +118,10 @@ ul {
   cursor: pointer;
 }
 
-.selected-filter {
+.filter[aria-pressed="true"] {
   color: hsl(220, 98%, 61%);
+}
+
+.visually-hidden {
+  display: none;
 }
