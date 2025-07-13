@@ -52,6 +52,7 @@ ul {
   font-size: 1.4rem;
   background: #25273c;
   border-radius: 0.6rem;
+  display: flex;
 }
 
 .create-task__btn {
@@ -60,6 +61,22 @@ ul {
   color: hsl(234, 11%, 52%);
   font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
   cursor: text;
+  height: 25px;
+  width: 100%;
+  text-align: left;
+}
+
+.new-task-input {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  font-family: "Josefin Sans", Avenir, Helvetica, Arial, sans-serif;
+  color: hsl(234, 39%, 85%);
+  width: 100%;
+}
+
+.new-task-input:focus-visible {
+  outline: none;
 }
 
 .task-list {
@@ -124,4 +141,29 @@ ul {
 
 .visually-hidden {
   display: none;
+}
+
+.submit-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cancel-task,
+.submit-task {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-task path,
+.submit-task path {
+  transition: all 0.2s;
+}
+
+.cancel-task:hover path {
+  fill: #e74c3c;
+}
+
+.submit-task:hover path {
+  stroke: #27ae60;
 }

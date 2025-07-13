@@ -1,5 +1,7 @@
 import { useState } from "react";
 import FilterButton from "./components/FilterButton";
+import CheckIcon from "./components/CheckIcon";
+import CrossIcon from "./components/CrossIcon";
 
 const FILTER_MAP = {
   All: () => true,
@@ -12,17 +14,22 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App({ taskData }) {
   const [filter, setFilter] = useState("All");
   const [taskList, setTaskList] = useState([...taskData]);
+  const [isCreating, setIsCreating] = useState(false);
+  const [taskText, setTaskText] = useState("");
 
   const clearCompleted = () => {
     const remainingTasks = taskList.filter((task) => !task.completed);
     setTaskList(remainingTasks);
   };
 
-  const tasks = taskList.filter(FILTER_MAP[filter]).map((task) => (
-    <li className="task-item" key={task.id}>
-      {task.text}
-    </li>
-  ));
+  const tasks = taskList
+    .filter(FILTER_MAP[filter])
+    .map((task) => (
+      <li className="task-item" key={task.id}>
+        {task.text}
+      </li>
+    ))
+    .reverse();
 
   const filterList = FILTER_NAMES.map((name) => (
     <FilterButton
@@ -32,6 +39,17 @@ function App({ taskData }) {
       setFilter={setFilter}
     />
   ));
+
+  const addTask = (taskName) => {
+    if (!taskName) return;
+    setTaskList([
+      { id: crypto.randomUUID(), text: taskName, completed: false },
+      ...taskList,
+    ]);
+    setTaskText("");
+    setIsCreating(false);
+  };
+
   return (
     <div className="content">
       <header className="header">
@@ -40,7 +58,43 @@ function App({ taskData }) {
       <main>
         <section className="task-section">
           <div className="create-task">
-            <button className="create-task__btn">Create a new todo...</button>
+            {!isCreating ? (
+              <button
+                className="create-task__btn"
+                onClick={() => setIsCreating(!isCreating)}
+              >
+                Create a new todo...
+              </button>
+            ) : (
+              <>
+                <input
+                  onKeyDown={(e) =>
+                    e.key === "Enter" ? addTask(taskText) : null
+                  }
+                  className="new-task-input"
+                  autoFocus
+                  onChange={(e) => {
+                    setTaskText(e.target.value);
+                  }}
+                  value={taskText}
+                ></input>
+                <button
+                  className="submit-task"
+                  onClick={() => addTask(taskText)}
+                >
+                  <CheckIcon fillColor="hsl(233, 14%, 35%)" />
+                </button>
+                <button
+                  className="cancel-task"
+                  onClick={() => {
+                    setIsCreating(false);
+                    setTaskText("");
+                  }}
+                >
+                  <CrossIcon fillColor="hsl(233, 14%, 35%)" />
+                </button>
+              </>
+            )}
           </div>
           <ul className="task-list">{tasks}</ul>
           <div className="task-count">
