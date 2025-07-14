@@ -12,7 +12,7 @@ const CheckIcon = ({ fillColor }) => {
       <path
         fill="none"
         stroke={fillColor}
-        stroke-width="2"
+        strokeWidth="2"
         d="M1 4.304L3.696 7l6-6"
       />
     </svg>

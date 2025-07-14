@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterButton from "./components/FilterButton";
 import CheckIcon from "./components/CheckIcon";
 import CrossIcon from "./components/CrossIcon";
@@ -13,9 +13,15 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App({ taskData }) {
   const [filter, setFilter] = useState("All");
-  const [taskList, setTaskList] = useState([...taskData]);
+  const [taskList, setTaskList] = useState(
+    JSON.parse(localStorage.getItem("taskData")) ?? [...taskData]
+  );
   const [isCreating, setIsCreating] = useState(false);
   const [taskText, setTaskText] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("taskData", JSON.stringify(taskList));
+  }, [taskList]);
 
   const clearCompleted = () => {
     const remainingTasks = taskList.filter((task) => !task.completed);
@@ -26,7 +32,11 @@ function App({ taskData }) {
     .filter(FILTER_MAP[filter])
     .map((task) => (
       <li className="task-item" key={task.id}>
-        {task.text}
+        <button
+          onClick={() => handleTaskCompletion(task.id)}
+          className={task.completed ? "circle__complete" : "circle__incomplete"}
+        ></button>
+        <div className="task-text">{task.text}</div>
       </li>
     ))
     .reverse();
@@ -48,6 +58,14 @@ function App({ taskData }) {
     ]);
     setTaskText("");
     setIsCreating(false);
+  };
+
+  const handleTaskCompletion = (taskId) => {
+    const updatedTasks = taskList.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    );
+
+    setTaskList(updatedTasks);
   };
 
   return (
